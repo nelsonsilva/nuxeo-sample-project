@@ -1,0 +1,53 @@
+apply plugin: 'maven'
+
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+    dependencies {
+        classpath group: 'org.nuxeo.gradle.plugin', name: 'nuxeo-gradle-plugin', version: '1.0-SNAPSHOT'
+    }
+}
+
+apply plugin: 'nuxeo'
+
+// Read these settings from gradle.properties
+nuxeo {
+    sdk=nuxeoSDK
+    version=nuxeoVersion
+}
+
+dependencies {
+    compile(
+        [group: 'org.nuxeo.ecm.core', name: 'nuxeo-core-api', version: nuxeo.version],
+        [group: 'org.nuxeo.ecm.core', name: 'nuxeo-core', version: nuxeo.version],
+        [group: 'org.nuxeo.ecm.core', name: 'nuxeo-core-event', version: nuxeo.version],
+        [group: 'org.nuxeo.ecm.platform', name: 'nuxeo-platform-webapp-core', version: nuxeo.version],
+        [group: 'org.nuxeo.ecm.platform', name: 'nuxeo-platform-filemanager-core', version: nuxeo.version],
+        [group: 'org.nuxeo.ecm.platform', name: 'nuxeo-platform-directory-api', version: nuxeo.version],
+        [group: 'org.nuxeo.ecm.platform', name: 'nuxeo-platform-filemanager-api', version: nuxeo.version],
+        [group: 'org.nuxeo.ecm.platform', name: 'nuxeo-platform-search-api', version: nuxeo.version],
+        [group: 'org.nuxeo.ecm.platform', name: 'nuxeo-platform-syndication', version: nuxeo.version],
+        [group: 'org.nuxeo.ecm.platform', name: 'nuxeo-platform-types-api', version: nuxeo.version],
+        [group: 'org.nuxeo.ecm.platform', name: 'nuxeo-platform-ui-web', version: nuxeo.version],
+        [group: 'org.nuxeo.ecm.platform', name: 'nuxeo-platform-webapp-base', version: nuxeo.version],
+
+        [group: 'org.nuxeo.common', name: 'nuxeo-common', version: nuxeo.version],
+
+        [group: 'org.nuxeo.runtime', name: 'nuxeo-runtime', version: nuxeo.version],
+
+        /*
+        [group: 'javax.faces', name: 'jsf-api', version: '1.2_12'],
+
+        [group: 'org.jboss.seam', name: 'jboss-seam', version: '2.1.0.SP1'],
+        [group: 'org.jboss.seam', name: 'jboss-seam-remoting', version: '2.1.0.SP1'],
+
+        [group: 'org.hibernate', name: 'hibernate-validator', version: '3.1.0.GA'],
+
+        [group: 'dom4j', name: 'dom4j', version: '1.6.1'],
+
+        [group: 'org.restlet', name: 'org.restlet', version: '1.0.7']
+        */
+    )
+}
+
